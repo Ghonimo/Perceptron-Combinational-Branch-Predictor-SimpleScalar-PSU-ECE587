@@ -1,0 +1,163 @@
+#!/usr/bin/perl
+
+## benchmark database
+##
+## (c) 1997  Dirk Grunwald <grunwald@cs.colorado.edu>, University of Colorado
+##      and  Artur Klauser <klauser@cs.colorado.edu>, Intel
+##
+##
+## Setting info$rmation for the BENCHMARK we know how to handle. We set
+## the following variables for each BENCHMARK name.
+##
+##      BINARIES - the program name to run
+##
+##      RUN_ARGS - the arguments to supply to the instrumented application
+##
+##      PRE_RUN  - shell commands to run prior to running the application
+##
+##      POST_RUN - shell command to run following running the
+##                 application -- should usually clean up after PRE_RUN
+##
+
+## these should be defined in Run.pl
+
+#$exp_dir = "./";
+$bench_dir = "$exp_dir/bench"		if (! defined $bench_dir);
+$input_dir = "$exp_dir/input/ref"	if (! defined $input_dir);
+$ext = "ss"	if (! defined $ext);
+$cp = "cp"	if (! defined $cp);
+$rm = "rm"	if (! defined $rm);
+$and = ";"	if (! defined $and);
+
+$bench_dir = "$bench_dir/$endian";
+
+# benchmarks start here
+
+$BINARIES{"go"}		= "$bench_dir/go.$ext";
+$RUN_ARGS{"go"}		= "50 21 5stone21.in";
+$OUT_FILE{"go"}		= "5stone21.out";
+$PRE_RUN {"go"}		= "$cp $input_dir/5stone21.* .";
+$POST_RUN{"go"}		= "$rm 5stone21.*";
+
+$BINARIES{"gcc"}	= "$bench_dir/cc1.$ext";
+$RUN_ARGS{"gcc"}	= "varasm.i -quiet -funroll-loops -fforce-mem -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fstrength-reduce -fpeephole -fschedule-insns -finline-functions -fschedule-insns2 -O -o varasm.s";
+$OUT_FILE{"gcc"}	= "varasm.out";
+$PRE_RUN {"gcc"}	= "$cp $input_dir/varasm.i .";
+$POST_RUN{"gcc"}	= "$rm varasm.*";
+
+$BINARIES{"m88ksim"}	= "$bench_dir/m88ksim.$ext";
+$RUN_ARGS{"m88ksim"}	= "-c";
+$OUT_FILE{"m88ksim"}	= "m88ksim.out";	# changed name from ref.out
+$PRE_RUN {"m88ksim"}	= "$cp $input_dir/ctl.in m88ksim.in ; $cp $input_dir/*.big . ";
+$POST_RUN{"m88ksim"}	= "$rm m88ksim.* m88ksim.in *.big";
+$STDIN_FILE{"m88ksim"}  = "m88ksim.in";
+
+$BINARIES{"compress"}	= "$bench_dir/compress.$ext";
+$RUN_ARGS{"compress"}	= "< bigtest.in";
+$OUT_FILE{"compress"}	= "bigtest.out";
+$PRE_RUN {"compress"}	= "$cp $input_dir/bigtest.in .";
+$POST_RUN{"compress"}	= "$rm bigtest.*";
+$STDIN_FILE{"compress"} = "bigtest.in";
+
+$BINARIES{"li"}		= "$bench_dir/li.$ext";
+$RUN_ARGS{"li"}		= "*.lsp";
+$OUT_FILE{"li"}		= "li.out";	# changed this name from ref.out
+$PRE_RUN {"li"}		= "$cp $input_dir/*.lsp .";
+$POST_RUN{"li"}		= "$rm *.lsp li.*";
+
+$BINARIES{"ijpeg"}	= "$bench_dir/ijpeg.$ext";
+$RUN_ARGS{"ijpeg"}	= "-image_file vigo.ppm -compression.quality 90 -compression.optimize_coding 0 -compression.smoothing_factor 90 -difference.image 1 -difference.x_stride 10 -difference.y_stride 10 -verbose 1 -GO.findoptcomp";
+$OUT_FILE{"ijpeg"}	= "vigo.out";
+$PRE_RUN {"ijpeg"}	= "$cp $input_dir/vigo.* .";
+$POST_RUN{"ijpeg"}	= "$rm vigo.*";
+
+$BINARIES{"perl"}	= "$bench_dir/perl.$ext";
+$RUN_ARGS{"perl"}	= "primes.pl";
+$OUT_FILE{"perl"}	= "primes.out";
+$PRE_RUN {"perl"}	= "$cp $input_dir/primes.* .";
+$POST_RUN{"perl"}	= "$rm primes.*";
+$STDIN_FILE{"perl"}     = "primes.in";
+
+$BINARIES{"vortex"}	= "$bench_dir/vortex.$ext";
+$RUN_ARGS{"vortex"}	= "vortex.in";
+$OUT_FILE{"vortex"}	= "vortex.out";
+$PRE_RUN {"vortex"}	= "$cp $input_dir/vortex.* . ; $cp $input_dir/persons.1k . ; $cp $input_dir/bendian.*nv . ";
+$POST_RUN{"vortex"}	= "$rm vortex.* persons.* bendian.*";
+
+$BINARIES{"tomcatv"}	= "$bench_dir/tomcatv.$ext";
+$RUN_ARGS{"tomcatv"}	= "< tomcatv.in";
+$OUT_FILE{"tomcatv"}	= "tomcatv.out";
+$PRE_RUN {"tomcatv"}	= "$cp $input_dir/tomcatv.* . ; $cp $input_dir/TOMCATV.MODEL .";
+$POST_RUN{"tomcatv"}	= "$rm tomcatv.* TOMCATV.*";
+$STDIN_FILE{"tomcatv"}  = "tomcatv.in";
+
+$BINARIES{"swim"}	= "$bench_dir/swim.$ext";
+$RUN_ARGS{"swim"}	= "< swim.in";
+$OUT_FILE{"swim"}	= "swim.out";
+$PRE_RUN {"swim"}	= "$cp $input_dir/swim.* .";
+$POST_RUN{"swim"}	= "$rm swim.*";
+$STDIN_FILE{"swim"}     = "swim.in";
+
+$BINARIES{"su2cor"}	= "$bench_dir/su2cor.$ext";
+$RUN_ARGS{"su2cor"}	= "< su2cor.in";
+$OUT_FILE{"su2cor"}	= "su2cor.out";
+$PRE_RUN {"su2cor"}	= "$cp $input_dir/su2cor.* . ; $cp $input_dir/SU2COR.MODEL . ";
+$POST_RUN{"su2cor"}	= "$rm su2cor.* SU2COR.*";
+$STDIN_FILE{"su2cor"}   = "su2cor.in";
+
+$BINARIES{"hydro2d"}	= "$bench_dir/hydro2d.$ext";
+$RUN_ARGS{"hydro2d"}	= "< hydro2d.in";
+$OUT_FILE{"hydro2d"}	= "hydro2d.out";
+$PRE_RUN {"hydro2d"}	= "$cp $input_dir/hydro2d.* . ; $cp $input_dir/HYDRO2D.MODEL .";
+$POST_RUN{"hydro2d"}	= "$rm hydro2d.* HYDRO2D.*";
+$STDIN_FILE{"hydro2d"}  = "hydro2d.in";
+
+$BINARIES{"mgrid"}	= "$bench_dir/mgrid.$ext";
+$RUN_ARGS{"mgrid"}	= "< mgrid.in";
+$OUT_FILE{"mgrid"}	= "mgrid.out";
+$PRE_RUN {"mgrid"}	= "$cp $input_dir/mgrid.* .";
+$POST_RUN{"mgrid"}	= "$rm mgrid.*";
+$STDIN_FILE{"mgrid"}    = "mgrid.in";
+
+$BINARIES{"applu"}	= "$bench_dir/applu.$ext";
+# $RUN_ARGS{"applu"}	= "< applu.in";
+$RUN_ARGS{"applu"}      = "";
+$OUT_FILE{"applu"}	= "applu.out";
+$PRE_RUN {"applu"}	= "$cp $input_dir/applu.* .";
+$POST_RUN{"applu"}	= "$rm applu.*";
+# $STDIN_FILE{"applu"}    = "applu.in";
+
+$BINARIES{"turb3d"}	= "$bench_dir/turb3d.$ext";
+$RUN_ARGS{"turb3d"}	= "< turb3d.in";
+$OUT_FILE{"turb3d"}	= "turb3d.out";
+$PRE_RUN {"turb3d"}	= "$cp $input_dir/turb3d.* .";
+$POST_RUN{"turb3d"}	= "$rm turb3d.*";
+$STDIN_FILE{"turb3d"}   = "turb3d.in";
+
+$BINARIES{"apsi"}	= "$bench_dir/apsi.$ext";
+$RUN_ARGS{"apsi"}	= "";
+$OUT_FILE{"apsi"}	= "apsi.out";
+$PRE_RUN {"apsi"}	= "$cp $input_dir/apsi.in .";
+$POST_RUN{"apsi"}	= "$rm apsi.*";
+
+$BINARIES{"fpppp"}	= "$bench_dir/fpppp.$ext";
+# $RUN_ARGS{"fpppp"}	= "< natoms.in";
+$RUN_ARGS{"fpppp"}	= "";
+$OUT_FILE{"fpppp"}	= "natoms.out";
+# $PRE_RUN {"fpppp"}	= "$cp $input_dir/natoms.* .";
+$POST_RUN{"fpppp"}	= "$rm fpppp.* natoms.*";
+# $STDIN_FILE{"fpppp"}    = "natoms.in";
+
+$BINARIES{"wave5"}	= "$bench_dir/wave5.$ext";
+$RUN_ARGS{"wave5"}	= "< wave5.in";
+$OUT_FILE{"wave5"}	= "wave5.out";
+$PRE_RUN {"wave5"}	= "$cp $input_dir/wave5.* .";
+$POST_RUN{"wave5"}	= "$rm wave5.* WAVE.*";
+$STDIN_FILE{"wave5"}    = "wave5.in";
+
+
+# return 1 for successful include
+1; 
+
+
+

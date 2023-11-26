@@ -6,12 +6,14 @@ An implementation and evaluation of a Perceptron-based Branch Prediction Algorit
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Files_Modified](#Files_Modified)
 - [Contributing](#contributing)
 - [References](#references)
 - [License](#license)
 
 ## Introduction
-Branch prediction is a crucial aspect of modern high-performance computing systems. Poor branch prediction can lead to significant performance bottlenecks. The project aims to investigate advanced algorithms for branch prediction, particularly Perceptron-based predictors, to improve prediction accuracy and efficiency. Various flavors of Perceptron predictors, such as Strided Sampling Hashed Perceptron Predictor and Multiperspective Perceptron Predictor with TAGE, will also be explored.
+This repository contains the SimpleScalar simulator with two additional branch predictors: "comb2lev" and "perceptron". These predictors are integrated into the existing SimpleScalar framework, extending its capabilities without altering the original functionality.
+
 
 ## Installation
 1. Clone the repository:
@@ -23,10 +25,18 @@ cd ECE587-AdvancedBranchPrediction
 3. Follow additional setup instructions as needed.
 
 ## Usage
-1. Run the SimpleScalar simulator with the implemented branch predictor algorithm:
-./simulator_command_here
+To run the simulator with the new branch predictors, use the following commands:
+For the Perceptron predictor:
+./Run.pl -db ./bench.db -dir results/gcc1 -benchmark gcc -sim $HOME/your_directory/simulator/ss3/sim-outorder -args "-fastfwd 1000000 -max:inst 1000000 -bpred perceptron"
+For the Combined Two-Level predictor (comb2lev), replace -bpred perceptron with -bpred comb2lev in the command.
 
-2. Analyze the results and compare with existing benchmarks.
+## Files_Modified
+The following files have been updated to include the new branch predictors:
+
+1. bpred.c: Core logic for the branch predictors.
+2. bpred.h: Header file with necessary definitions.
+3. sim-outorder.c: Integration of new predictors with the out-of-order simulation model.
+The original SimpleScalar implementation remains intact. The new predictors are added enhancements, and all existing functionality is preserved.
 
 ## Contributing
 Contributions are welcome! Please read the [CONTRIBUTING](CONTRIBUTING.md) guidelines before submitting a pull request or opening an issue.

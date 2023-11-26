@@ -1,0 +1,26 @@
+lo dcrand.big
+cm i sapr 0
+cm i uapr 0
+cm d sapr 0
+cm d uapr 0
+g
+sd
+bd
+cs
+
+cd i c
+cd i 6d
+cd i 9e
+cd i b4
+cd d 2
+cd d 3
+cd d 5
+cd d 30
+cd d bb
+rst
+cacheoff
+sr
+lo dhry.big
+g
+sd
+q

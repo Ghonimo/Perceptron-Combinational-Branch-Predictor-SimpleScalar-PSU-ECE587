@@ -1,0 +1,277 @@
+  DCMMU & ICMMU RESET   
+sim>> Loading section ".text" at address $000100B8, bytes to load $000073B0
+Loading section ".data" at address $00407468, bytes to load $00005F90
+Loading section ".bss" at address $0040D3F8, bytes to load $00600F58
+Setting stack space at EFFF0000 to EFFFFFFF
+Execution address = $000110C8
+SysV IO vectors: Enabled
+
+sim>> 
+sim>> 
+sim>> 
+sim>> 
+sim>> Effective address: 000110C8
+Program "EXIT", exit value 937594357
+   r00:  00000000   r01:  00016990   r02:  37E28DF5   r03:  00000000
+   r04:  404468CC   r05:  9A77E5EB   r06:  005CC968   r07:  005CC968
+   r08:  404956D3   r09:  00000009   r10:  00000AA4   r11:  00400000
+   r12:  00000000   r13:  00000998   r14:  00000000   r15:  00000000
+   r16:  00000000   r17:  00000000   r18:  00000000   r19:  00000000
+   r20:  00000000   r21:  00000000   r22:  00000000   r23:  00000000
+   r24:  37E28DF5   r25:  00000000   r26:  00000000   r27:  00000000
+   r28:  00000000   r29:  00000000   r30:  00000000   r31:  004093F0
+   ip:   0x000169AC   vbr:  0x00000000   psr:  0x800003FF
+   sbd:  0x00000000
+   fpsr: 0x00000001   fpcr: 0x00000000 
+
+sim>> Instructions: 13604141
+Clocks:       27571301
+arithmetic          2064399   15.17 percent
+logical             2368853   17.41 percent
+load address              0    0.00 percent
+load                3557998   26.15 percent
+store               1493603   10.98 percent
+xmem                      0    0.00 percent
+control register          0    0.00 percent
+bit field            884738    6.50 percent
+jumps not taken      313944    2.31 percent
+jumps taken         2035869   14.97 percent
+traps                     1    0.00 percent
+floating point       884736    6.50 percent
+error count               0    0.00 percent
+ NON-Execution Clocks: 
+  Clocks due to Mbus Arbitration = 5051629 
+  Clocks due to Pbus Arbitration = 294214 
+
+sim>> 
+             DCMMU     BATC   
+-----------------------------------------------------------
+| entry |      LBA     |      PBA     | T | G | C | W | V |
+-----------------------------------------------------------
+   0          0000           0000       0   0   0   0   0 
+   1          0000           0000       0   0   0   0   0 
+   2          0000           0000       0   0   0   0   0 
+   3          0000           0000       0   0   0   0   0 
+   4          0000           0000       0   0   0   0   0 
+   5          0000           0000       0   0   0   0   0 
+   6          0000           0000       0   0   0   0   0 
+   7          0000           0000       0   0   0   0   0 
+   8          3ffe           1ffe       1   0   1   0   1 
+   9          3fff           1fff       1   0   1   0   1 
+
+sim>>  
+cmmu function statistics: 
+                         -----------------
+                         | Icmmu | Dcmmu |
+ ----------------------------------------|
+|tablewalks              |    0  |    0  |
+-----------------------------------------|
+|tablewalks w/U,M bit set|    0  |    0  |
+-----------------------------------------|
+|write once              |    0  | 294209  |
+-----------------------------------------|
+|cache writes w/ copyback|    0  |    4  |
+-----------------------------------------|
+|cache reads w/ copyback |    0  | 293517  |
+-----------------------------------------|
+|probes                  |    0  |    0  |
+-----------------------------------------|
+
+ CONTINUE  -  PRESS  <return> 
+                 ----------------------------------------------
+                 | # of      | # of     | Hit      | Miss     |
+                 | checks    | hits     | Ratio    | Ratio    |
+---------------------------------------------------------------
+| BATC - ICMMU   |        0  |        0 |    0.00  |    0.00  |
+|----------------|-----------|----------|----------|----------|
+| PATC - ICMMU   |        0  |        0 |    0.00  |    0.00  |
+|----------------|-----------|----------|----------|----------|
+| BATC - DCMMU   |        0  |        0 |    0.00  |    0.00  |
+|----------------|-----------|----------|----------|----------|
+| PATC - DCMMU   |        0  |        0 |    0.00  |    0.00  |
+---------------------------------------------------------------
+                 ----------------------------------------------
+                 | # of      | # of     | Hit      | Miss     |
+                 | accesses  | hits     | Ratio    | Ratio    |
+---------------------------------------------------------------
+| Instr. fetches | 13604141  | 13604092 |  100.00  |    0.00  |
+|----------------|-----------|----------|----------|----------|
+| Data loads     |  4442742  |  4002035 |   90.08  |    9.92  |
+|----------------|-----------|----------|----------|----------|
+| Data stores    |  2083435  |  2083429 |  100.00  |    0.00  |
+---------------------------------------------------------------
+
+sim>>  I CACHE (SET # 12) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  2   0    0x00011000   0xf4005800 0xf4005800 0x5f400000 0x5b5a0000   3 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   0 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   1 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   2 
+
+sim>>  I CACHE (SET # 109) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  2   0    0x00011000   0x152da754 0x61290004 0xf5097c08 0xdd480006   3 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   0 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   1 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   2 
+
+sim>>  I CACHE (SET # 158) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  2   0    0x00013000   0xf400c401 0x63ff0040 0x67ff0040 0x231f0028   3 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   0 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   1 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   2 
+
+sim>>  I CACHE (SET # 180) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  2   0    0x00013000   0xf5ad7c0c 0xd90dfff6 0x1459000c 0xf0429025   3 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   0 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   1 
+  3   0    0x00000000   0x00000000 0x00000000 0x00000000 0x00000000   2 
+
+sim>>  D CACHE (SET # 2) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  1   0    0x00720000   0x00000000 0x00000000 0x4023b81d 0x7dbf4880   1 
+  2   0    0x00549000   0x00000000 0x00000000 0x4023b81d 0x7dbf4880   0 
+  1   0    0x00452000   0x4023b81d 0x7dbf4880 0x00000000 0x00000000   3 
+  1   0    0x005d5000   0x4023b81d 0x7dbf4880 0x00000000 0x00000000   2 
+
+sim>>  D CACHE (SET # 3) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  1   0    0x006de000   0x4023b81d 0x7dbf4880 0x00000000 0x00000000   1 
+  1   0    0x00691000   0x4023b81d 0x7dbf4880 0x00000000 0x00000000   3 
+  1   0    0x0067e000   0x4023b81d 0x7dbf4880 0x4023b81d 0x7dbf4880   2 
+  1   0    0x00665000   0x00000000 0x00000000 0x403d942c 0x3c9eecc0   0 
+
+sim>>  D CACHE (SET # 5) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  1   0    0x007ee000   0x4023b81d 0x7dbf4880 0x00000000 0x00000000   0 
+  1   0    0x00693000   0x00000000 0x00000000 0x405468cc 0x9a77e5eb   2 
+  1   0    0x0054e000   0x406140f9 0x7f32652e 0x00000000 0x00000000   3 
+  2   0    0x0058b000   0x404468cc 0x9a77e5eb 0x00000000 0x00000000   1 
+
+sim>>  D CACHE (SET # 48) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  1   0    0x004ca000   0x406140f9 0x7f32652e 0x00000000 0x00000000   1 
+  2   0    0x0063d000   0x406a39dd 0xf492639b 0x406140f9 0x7f32652e   0 
+  1   0    0x0066b000   0x4033b81d 0x7dbf4880 0x4023b81d 0x7dbf4880   3 
+  1   0    0x005a5000   0x00000000 0x00000000 0x4023b81d 0x7dbf4880   2 
+
+sim>>  D CACHE (SET # 187) :
+ vv  kill  address tag  data0      data1      data2      data3      order
+ --- ----  -----------  ---------- ---------- ---------- ---------- -----
+  1   0    0x00507000   0x00000000 0x00000000 0x4023b81d 0x7dbf4880   2 
+  2   0    0x00715000   0x4023b81d 0x7dbf4880 0x4033b81d 0x7dbf4880   0 
+  1   0    0x0072c000   0x4023b81d 0x7dbf4880 0x404468cc 0x9a77e5eb   1 
+  1   0    0x00618000   0x00000000 0x00000000 0x4023b81d 0x7dbf4880   3 
+
+sim>> 
+Dhrystone Benchmark, Version 2.1 (Language: C)
+
+Program compiled without 'register' attribute
+
+Execution starts, 100000 runs through Dhrystone
+Execution ends
+
+Final values of the variables used in the benchmark:
+
+Int_Glob:            5
+        should be:   5
+Bool_Glob:           1
+        should be:   1
+Ch_1_Glob:           A
+        should be:   A
+Ch_2_Glob:           B
+        should be:   B
+Arr_1_Glob[8]:       7
+        should be:   7
+Arr_2_Glob[8][7]:    100010
+        should be:   Number_Of_Runs + 10
+Ptr_Glob->
+  Ptr_Comp:          4264896
+        should be:   (implementation-dependent)
+  Discr:             0
+        should be:   0
+  Enum_Comp:         2
+        should be:   2
+  Int_Comp:          17
+        should be:   17
+  Str_Comp:          DHRYSTONE PROGRAM, SOME STRING
+        should be:   DHRYSTONE PROGRAM, SOME STRING
+Next_Ptr_Glob->
+  Ptr_Comp:          4264896
+        should be:   (implementation-dependent), same as above
+  Discr:             0
+        should be:   0
+  Enum_Comp:         1
+        should be:   1
+  Int_Comp:          18
+        should be:   18
+  Str_Comp:          DHRYSTONE PROGRAM, SOME STRING
+        should be:   DHRYSTONE PROGRAM, SOME STRING
+Int_1_Loc:           5
+        should be:   5
+Int_2_Loc:           13
+        should be:   13
+Int_3_Loc:           7
+        should be:   7
+Enum_Loc:            1
+        should be:   1
+Str_1_Loc:           DHRYSTONE PROGRAM, 1'ST STRING
+        should be:   DHRYSTONE PROGRAM, 1'ST STRING
+Str_2_Loc:           DHRYSTONE PROGRAM, 2'ND STRING
+        should be:   DHRYSTONE PROGRAM, 2'ND STRING
+
+Microseconds for one run through Dhrystone:   26.3 
+Dhrystones per Second:                      38022.8 
+
+  DCMMU & ICMMU RESET   
+
+sim>> 
+sim>> 
+sim>> Loading section ".text" at address $000100B8, bytes to load $000077C0
+Loading section ".data" at address $00407878, bytes to load $00006340
+Loading section ".bss" at address $0040DBB8, bytes to load $000037B8
+Setting stack space at EFFF0000 to EFFFFFFF
+Execution address = $000110C8
+SysV IO vectors: Enabled
+
+sim>> Effective address: 000110C8
+Program "EXIT", exit value 1
+   r00:  00000000   r01:  00016CE0   r02:  00000001   r03:  00410E60
+   r04:  00000001   r05:  0000000A   r06:  00000AA4   r07:  0000000A
+   r08:  00000001   r09:  00000009   r10:  00000998   r11:  00410E60
+   r12:  0040BB98   r13:  00400000   r14:  00000000   r15:  00000000
+   r16:  00000000   r17:  00000000   r18:  00000000   r19:  00000000
+   r20:  00000000   r21:  00000000   r22:  00000000   r23:  00000000
+   r24:  00000001   r25:  00000000   r26:  00000000   r27:  00000000
+   r28:  00000000   r29:  00000000   r30:  00000000   r31:  00409800
+   ip:   0x00016CFC   vbr:  0x00000000   psr:  0x800003FF
+   sbd:  0x00000000
+   fpsr: 0x00000001   fpcr: 0x00000000 
+
+sim>> Instructions: 41638572
+Clocks:       52757437
+arithmetic          7008473   16.83 percent
+logical            11207466   26.92 percent
+load address         300119    0.72 percent
+load                7707753   18.51 percent
+store               6103428   14.66 percent
+xmem                      0    0.00 percent
+control register          0    0.00 percent
+bit field           1100201    2.64 percent
+jumps not taken     2204595    5.29 percent
+jumps taken         6006382   14.43 percent
+traps                    66    0.00 percent
+floating point           89    0.00 percent
+error count               0    0.00 percent
+
+sim>> 
