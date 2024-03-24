@@ -17,7 +17,6 @@ This repository contains the SimpleScalar simulator with two additional branch p
 
 ## Installation
 1. Clone the repository:
-git clone https://github.com/your_username/ECE587-AdvancedBranchPrediction.git
 
 2. Navigate to the directory:
 cd ECE587-AdvancedBranchPrediction
