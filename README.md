@@ -1,46 +1,31 @@
-# Perceptron-Branch-Predictor
-An implementation and evaluation of a Perceptron-based Branch Prediction Algorithm in the SimpleScalar simulator for enhancing CPU performance.
+# Advanced Branch Prediction in SimpleScalar
 
-## Table of Contents
+## Overview
+This repository contains our work for ECE 587: Advanced Computer Architecture at Portland State University, focusing on enhancing the branch prediction capabilities of the SimpleScalar simulator. We've implemented a Perceptron Branch Predictor and a Combinational Two-Level Adaptive Branch Predictor, demonstrating the application of sophisticated machine learning principles and adaptive strategies to improve prediction accuracy in processor simulation environments.
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Files_Modified](#Files_Modified)
-- [Contributing](#contributing)
-- [References](#references)
-- [License](#license)
+## Features
+- **Perceptron Branch Predictor**: Utilizes a simple neural network model to dynamically predict branch behavior, considering longer branch histories and complex patterns for superior prediction accuracy.
+- **Combinational Two-Level Adaptive Branch Predictor**: Integrates two adaptive predictors with a meta-predictor, dynamically selecting the most accurate prediction strategy based on historical performance.
+- **Benchmark Analysis**: Detailed benchmarking using the `gcc` benchmarks to compare our advanced predictors against traditional methods, showcasing significant improvements in prediction accuracy.
 
-## Introduction
-This repository contains the SimpleScalar simulator with two additional branch predictors: "comb2lev" and "perceptron". These predictors are integrated into the existing SimpleScalar framework, extending its capabilities without altering the original functionality.
+## Getting Started
+Clone this repository to review our implementation and experiments:
+```bash
+git clone https://github.com/Ghonimo/Perceptron-Combinational-Branch-Predictor-SimpleScalar-PSU-ECE587
+```
 
+Navigate through the directories to explore the implementation details, benchmark results, and documentation of our project.
 
-## Installation
-1. Clone the repository:
+## Project Structure
+- src/: Source files modified in the SimpleScalar simulator to implement the branch predictors.
+- docs/: Comprehensive documentation including the project report and presentation slides detailing our design rationale, implementation challenges, and benchmark analysis.
+- testcases/: Test cases used for validating the functionality and accuracy of the implemented predictors.
 
-2. Navigate to the directory:
-cd ECE587-AdvancedBranchPrediction
+## Benchmarks and Results
+We conducted extensive benchmarking to evaluate the performance of our branch predictors. The perceptron predictor, notable for its use of machine learning principles, showed exceptional accuracy, especially in scenarios with complex branch patterns. The combinational predictor demonstrated versatility and high accuracy, benefiting from adaptive selection mechanisms.
 
-3. Follow additional setup instructions as needed.
+For detailed results and analysis, refer to the docs/ directory.
 
-## Usage
-To run the simulator with the new branch predictors, use the following commands:
-For the Perceptron predictor:
-./Run.pl -db ./bench.db -dir results/gcc1 -benchmark gcc -sim $HOME/your_directory/simulator/ss3/sim-outorder -args "-fastfwd 1000000 -max:inst 1000000 -bpred perceptron"
-For the Combined Two-Level predictor (comb2lev), replace -bpred perceptron with -bpred comb2lev in the command.
-
-## Files_Modified
-The following files have been updated to include the new branch predictors:
-
-1. bpred.c: Core logic for the branch predictors.
-2. bpred.h: Header file with necessary definitions.
-3. sim-outorder.c: Integration of new predictors with the out-of-order simulation model.
-The original SimpleScalar implementation remains intact. The new predictors are added enhancements, and all existing functionality is preserved.
-
-## Contributing
-Contributions are welcome! Please read the [CONTRIBUTING](CONTRIBUTING.md) guidelines before submitting a pull request or opening an issue.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
+This project is licensed under the MIT License - see the LICENSE file for details.
